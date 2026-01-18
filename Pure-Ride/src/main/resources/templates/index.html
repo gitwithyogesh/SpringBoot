@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{base}">
+
+
+    <div layout:fragment="content">
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <h1>Royal Enfield Toys</h1>
+            <p>Explore legendary machines built for luxury</p>
+        </section>
+        
+        <!-- BIKES SECTION -->
+        <section class="bikes-section">
+            <h2>Our Bikes</h2>
+            
+            <div class="bike-grid">
+                
+                <div class="bike-card" onclick="toggleBike(this)">
+                <img src="https://saltcreekmotorcycles.com.au/cdn/shop/articles/2022-royal-enfield-classic-350-first-look-retro-motorcycle-india-7.webp?v=1698107142"
+                    alt="Classic 350">
+                    <h3>Classic 350</h3>
+                        <button class="add-to-cart"
+                        onclick="addToCart('Classic 350', 2300); event.stopPropagation();">
+                        Add to Cart
+                    </button>
+
+                    <p class="short-text">Timeless design with modern performance</p><br>
+                    <div class="extra-content">
+                        <ul>
+                            <li>Engine: 349cc Single-cylinder</li>
+                            <li>Power: 20.2 bhp @ 6100 rpm</li>
+                            <li>Torque: 27 Nm @ 4000 rpm</li>
+                            <li>Top Speed: 120 km/h</li>
+                            <li>Gearbox: 5-speed (1 Down , 4 Up)</li>
+                            <li>Fuel Tank Capacity: 13L</li>
+                            <li>Mileage: ~35-38 km/l</li>
+                            <li>Brakes: Dual-channel ABS (Disc)</li>
+                            <li>Price: ₹2.30 lakh showroam</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bike-card" onclick="toggleBike(this)">
+                    <img src="https://img.etimg.com/thumb/msid-103326996,width-480,height-360,imgsize-103540,resizemode-75/bullet-350-launched.jpg"
+                    alt="Bullet 350">
+                    <h3>Bullet 350</h3>
+                     <button class="add-to-cart"
+ onclick="addToCart('Bullet 350', 2900); event.stopPropagation();">
+Add to Cart
+</button>
+                    <p class="short-text">The longest-running motorcycle in history</p>
+                    <div class="extra-content">
+                        <ul>
+                            <li>Engine: 349cc Single-cylinder</li>
+                            <li>Power: 20.2 bhp @ 6100 rpm</li>
+                            <li>Torque: 27 Nm @ 4000 rpm</li>
+                            <li>Top Speed: 110 km/h</li>
+                            <li>Gearbox: 5-speed</li>
+                            <li>Fuel Tank Capacity: 13L</li>
+                            <li>Mileage: ~35 km/l</li>
+                            <li>Brakes: Single-channel ABS (Disc, Drum)</li>
+                            <li>Price: ₹1.62 - 2.02 lakh showroam</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bike-card" onclick="toggleBike(this)">
+                    <img src="https://www.shutterstock.com/image-photo/february-2024-west-bengal-india-260nw-2426546651.jpg"
+                    alt="Hunter 350">
+                    <h3>Hunter 350</h3>
+                     <button class="add-to-cart"
+ onclick="addToCart('Hunter 350', 2800); event.stopPropagation();">
+Add to Cart
+</button>
+                    <p class="short-text">Urban roadster with sporty design and agile performance </p><br>
+                <div class="extra-content">
+                    <ul>
+                        <li>Engine: 349cc Single-cylinder</li>
+                        <li>Power: 20.2 bhp @ 6100 rpm</li>
+                        <li>Torque: 27 Nm @ 4000 rpm</li>
+                        <li>Top Speed: 130 km/h</li>
+                        <li>Gearbox: 5-speed (1 Down , 4 Up)</li>
+                        <li>Fuel Tank Capacity: 13L</li>
+                        <li>Mileage: ~36 km/l</li>
+                        <li>Brakes: Dual-channel ABS (Disc)</li>
+                        <li>Price: ₹2.50 lakh showroam</li>
+                    </ul>
+                </div>
+            </div>
+            
+            
+            <div class="bike-card" onclick="toggleBike(this)">
+                <img src="https://imgd.aeplcdn.com/1280x720//n/cw/ec/52259/royalenfield-meteor-350-rear-reflex-reflector0.jpeg?wm=2&q=75"
+                alt="Meteor 350">
+                <h3>Meteor 350</h3>
+                 <button class="add-to-cart"
+ onclick="addToCart('Meteor 350', 2000); event.stopPropagation();">
+Add to Cart
+</button>
+                <p class="short-text">Cruising comfort for long rides</p><br>
+                <div class="extra-content">
+                    <ul>
+                        <li>Engine: 349cc Single-cylinder</li>
+                        <li>Power: 20.2 bhp @ 6100 rpm</li>
+                        <li>Torque: 27 Nm @ 4000 rpm</li>
+                        <li>Top Speed: 115 km/h</li>
+                        <li>Gearbox: 5-speed (1 Down , 4 Up)</li>
+                        <li>Fuel Tank Capacity: 15L</li>
+                        <li>Mileage: ~36 km/l</li>
+                        <li>Brakes: Dual-channel ABS (Disc)</li>
+                        <li>Price: ₹2.50 lakh showroam</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bike-card" onclick="toggleBike(this)">
+                <img src="https://www.motoplanete.com/royal-enfield/zoom-700px/10210-450-Himalayan-2024-1000px.webp"
+                alt="Himalayan 450">
+                <h3>Himalayan 450 </h3>
+                 <button class="add-to-cart"
+ onclick="addToCart('Himalayan 450', 3000); event.stopPropagation();">
+Add to Cart
+</button>
+                <p class="short-text">Adventure touring made effortless</p><br>
+                <div class="extra-content">
+                    <ul>
+                        <li>Engine: 452cc liquid-cooled Single-cylinder</li>
+                        <li>Power: 40 bhp @ 8000 rpm</li>
+                        <li>Torque: 40 Nm @ 5500 rpm</li>
+                        <li>Top Speed: 165 km/h</li>
+                        <li>Gearbox: 6-speed slipper clutch</li>
+                        <li>Fuel Tank Capacity: 17 L</li>
+                        <li>Mileage: ~29 km/l</li>
+                        <li>Brakes: Dual-channel ABS (Disc)</li>
+                        <li>Price: ₹3.10 lakh showroam</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bike-card" onclick="toggleBike(this)">
+                <img src="https://cdn.bikedekho.com/processedimages/royal-enfield/scram-450/640X309/scram-4506696e270f09be.jpg"
+                alt="Guerrilla 450">
+                <h3>Guerrilla 450 </h3>
+                 <button class="add-to-cart"
+ onclick="addToCart('Guerrilla 450', 2500); event.stopPropagation();">
+Add to Cart
+</button>
+                <p class="short-text">Street-focused roadster with powerful 450cc performance</p>
+                <div class="extra-content">
+                    <ul>
+                        <li>Engine: 452cc liquid-cooled Single-cylinder</li>
+                        <li>Power: 40 bhp @ 8000 rpm</li>
+                        <li>Torque: 40 Nm @ 5500 rpm</li>
+                        <li>Top Speed: 165 km/h</li>
+                        <li>Gearbox: 6-speed slipper clutch</li>
+                        <li>Fuel Tank Capacity: 11 L</li>
+                        <li>Mileage: ~30 km/l</li>
+                        <li>Brakes: Dual-channel ABS (Disc)</li>
+                        <li>Price: ₹2.5k </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bike-card" onclick="toggleBike(this)">
+                <img src="https://imgd.aeplcdn.com/1056x594/n/kgq6seb_1777191.jpg?q=80" alt="Interceptor 650">
+                <h3>Interceptor 650</h3>
+                 <button class="add-to-cart"
+ onclick="addToCart('Classic 350', 230000); event.stopPropagation();">
+Add to Cart
+</button>
+                <p class="short-text">Retro roadster with twin power</p><br>
+                <div class="extra-content">
+                    <ul>
+                        <li>Engine: 647cc twin-cylinder</li>
+                        <li>Power: 47 bhp @ 7200 rpm</li>
+                        <li>Torque: 52 Nm @ 5150 rpm</li>
+                        <li>Top Speed: 170 km/h</li>
+                        <li>Gearbox: 6-speed slipper clutch</li>
+                        <li>Fuel Tank Capacity: 14 L</li>
+                        <li>Mileage: ~25 km/l</li>
+                        <li>Brakes: Dual-channel ABS (Disc)</li>
+                        <li>Price: ₹3.60 lakh showroam</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bike-card" onclick="toggleBike(this)">
+                <img src="https://gaadify.com/wp-content/uploads/2025/03/Royal-Enfield-Classic-650-accessories.jpg"
+                    alt="Classic 650">
+                    <h3>Classic 650</h3>
+                     <button class="add-to-cart"
+ onclick="addToCart('Classic 350', 230000); event.stopPropagation();">
+Add to Cart
+</button>
+                    <p class="short-text">Iconic classic styling combined with smooth twin-cylinder performance</p><br>
+                    <div class="extra-content">
+                        <ul>
+                            <li>Engine: 647cc twin-cylinder</li>
+                            <li>Power: 47 bhp @ 7200 rpm</li>
+                            <li>Torque: 52 Nm @ 5650 rpm</li>
+                            <li>Top Speed: 160 km/h</li>
+                            <li>Gearbox: 6-speed slipper clutch</li>
+                            <li>Fuel Tank Capacity: 14 L</li>
+                            <li>Mileage: ~24 km/l</li>
+                            <li>Brakes: Dual-channel ABS (Disc)</li>
+                            <li>Price: ₹3.50 lakh showroam</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bike-card" onclick="toggleBike(this)">
+                    <img src="https://cdn-s3.autocarindia.com/RoyalEnfield/Continental-GT-650/_AAB9339.JPG?w=640&q=75"
+                    alt="Continental GT 650">
+                    <h3>Continental GT 650</h3>
+                     <button class="add-to-cart"
+ onclick="addToCart('Classic 350', 230000); event.stopPropagation();">
+Add to Cart
+</button>
+                    <p class="short-text">Café racer spirit unleashed</p><br>
+                    <div class="extra-content">
+                        <ul>
+                            <li>Engine: 648cc twin-cylinder</li>
+                            <li>Power: 47 bhp @ 7200 rpm</li>
+                            <li>Torque: 52 Nm @ 5250 rpm</li>
+                            <li>Top Speed: 170 km/h</li>
+                            <li>Gearbox: 6-speed slipper clutch</li>
+                            <li>Fuel Tank Capacity: 12.5 L</li>
+                            <li>Mileage: ~26 km/l</li>
+                            <li>Brakes: Dual-channel ABS (Disc)</li>
+                            <li>Price: ₹3.80 lakh showroam</li>
+                        </ul>
+                </div>
+            </div>
+            
+            <div class="bike-card" onclick="toggleBike(this)">
+                <img src="https://media.licdn.com/dms/image/v2/D5612AQEaFnTiQURLnw/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1726138670887?e=2147483647&v=beta&t=XKQuq6SAPgjLqYzqSuMygbPMVE6MS9PzGKXnvEu3XGA"
+                alt="Super Meteor 650">
+                <h3>Super Meteor 650</h3>
+                 <button class="add-to-cart"
+ onclick="addToCart('Classic 350', 230000); event.stopPropagation();">
+Add to Cart
+</button>
+                <p class="short-text">Premium cruiser experience</p><br>
+                <div class="extra-content">
+                    <ul>
+                        <li>Engine: 648cc twin-cylinder</li>
+                        <li>Power: 47 bhp @ 7250 rpm</li>
+                        <li>Torque: 52 Nm @ 5150 rpm</li>
+                        <li>Top Speed: 150 km/h</li>
+                        <li>Gearbox: 6-speed multi clutch</li>
+                        <li>Fuel Tank Capacity: 16 L</li>
+                        <li>Mileage: ~23 km/l</li>
+                        <li>Brakes: Dual-channel ABS (Disc)</li>
+                        <li>Price: ₹4.30 lakh showroam</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bike-card" onclick="toggleBike(this)">
+                <img src="https://img.autocarpro.in/autocarpro/ff8aaec0-00f9-4c52-84db-6908dd30c257_bikesss.jpg?w=750&h=490&q=75&c=1"
+                alt="Shotgun 650">
+                <h3>Shotgun 650</h3>
+                 <button class="add-to-cart"
+ onclick="addToCart('Classic 350', 230000); event.stopPropagation();">
+Add to Cart
+</button>
+                <p class="short-text">Neo-modern bobber with aggressive stance and twin-cylinder power</p><br>
+                <div class="extra-content">
+                    <ul>
+                        <li>Engine: 648cc twin-cylinder</li>
+                        <li>Power: 47 bhp @ 7200 rpm</li>
+                        <li>Torque: 52 Nm @ 5150 rpm</li>
+                        <li>Top Speed: 170 km/h</li>
+                        <li>Gearbox: 6-speed slipper clutch</li>
+                        <li>Fuel Tank Capacity: 14 L</li>
+                        <li>Mileage: ~22 km/l</li>
+                        <li>Brakes: Dual-channel ABS (Disc)</li>
+                        <li>Price: ₹3.70 lakh showroam</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bike-card" onclick="toggleBike(this)">
+                <img src="https://vehiclebazaar.online/wp-content/uploads/2024/11/Royal-Enfield-Bear-650.png"
+                alt="Bear 650">
+                <h3>Bear 650</h3>
+                 <button class="add-to-cart"
+ onclick="addToCart('Classic 350', 230000); event.stopPropagation();">
+Add to Cart
+</button>
+                <p class="short-text">Scrambler-inspired motorcycle with rugged design and twin-cylinder power</p>
+                <div class="extra-content">
+                    <ul>
+                        <li>Engine: 647cc twin-cylinder</li>
+                        <li>Power: 47 bhp @ 7200 rpm</li>
+                        <li>Torque: 56 Nm @ 5150 rpm</li>
+                        <li>Top Speed: 160 km/h</li>
+                        <li>Gearbox: 6-speed multi clutch</li>
+                        <li>Fuel Tank Capacity: 14 L</li>
+                        <li>Mileage: ~22 km/l</li>
+                        <li>Brakes: Dual-channel ABS (Disc)</li>
+                        <li>Price: ₹3.90 lakh showroam</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+    
+</html>

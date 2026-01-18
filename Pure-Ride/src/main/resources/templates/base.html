@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+
+<body >
+    <div th:insert="navbar :: navbar"></div>
+
+    <div id="toast" class="toast info">
+        Contact Us: ✉️ support@repureride.com | 📞 +91 98765 49919
+    </div>
+    <script>
+        const toast = document.getElementById("toast");
+
+        function showToast(type = "info", message = "") {
+            // set content & color
+            toast.className = `toast ${type} show`;
+            if (message) toast.textContent = message;
+
+            // IMPORTANT: delay adding click listener
+            setTimeout(() => {
+                document.addEventListener("click", closeToastOnce);
+            }, 50);
+        }
+
+        function closeToastOnce() {
+            toast.classList.remove("show");
+            document.removeEventListener("click", closeToastOnce);
+        }
+    </script>
+
+    <script>
+        function toggleBike(card) {
+            const grid = document.querySelector('.bike-grid');
+            if (!grid) return;
+            const isActive = card.classList.contains('active');
+
+            document.querySelectorAll('.bike-card').forEach(c => {
+                c.classList.remove('active');
+            });
+
+            if (!isActive) {
+                card.classList.add('active');
+                grid.classList.add('active');
+            } else {
+                grid.classList.remove('active');
+            }
+        }
+    </script>
+<!-- 
+    <script>
+        const navAuth = document.querySelector('.nav-auth');
+
+        // Function to get full name from registered users
+        function getFullName(username) {
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+            const user = users.find(u => u.username === username);
+            return user ? user.fullName : username; // fallback if fullName not found
+        }
+
+        const loggedInUsername = localStorage.getItem("loggedInUser");
+        const fullName = getFullName(loggedInUsername);
+
+        function showNavbarForUser() {
+            if (loggedInUsername) {
+                navAuth.innerHTML = `
+            <span style="color:white; margin-right:10px;">Hi, ${fullName}</span>
+            <button class="btn login-btn logout-btn">Logout</button>
+        `;
+
+                document.querySelector('.logout-btn').addEventListener('click', () => {
+                    localStorage.removeItem("loggedInUser"); // remove logged-in user
+                    window.location.href = "login"; // redirect to login
+                });
+            } else {
+                // Show login/register if no user logged in
+                navAuth.innerHTML = `
+            <a href="login" class="btn login-btn">Login</a>
+            <a href="register" class="btn register-btn">Register</a>
+        `;
+            }
+        }
+
+        // Run on page load
+        showNavbarForUser();
+    </script>
+ -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const navAuth = document.querySelector('.nav-auth');
+    if (!navAuth) return; // 👉 IMPORTANT FIX
+
+    function getFullName(username) {
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const user = users.find(u => u.username === username);
+        return user ? user.fullName : username;
+    }
+
+    const loggedInUsername = localStorage.getItem("loggedInUser");
+    const fullName = getFullName(loggedInUsername);
+
+    if (loggedInUsername) {
+        navAuth.innerHTML = `
+            <span style="color:white; margin-right:10px;">Hi, ${fullName}</span>
+            <button class="btn login-btn logout-btn">Logout</button>
+        `;
+
+        document.querySelector('.logout-btn').addEventListener('click', () => {
+            localStorage.removeItem("loggedInUser");
+            window.location.href = "login";
+        });
+    } else {
+        navAuth.innerHTML = `
+            <a href="login" class="btn login-btn">Login</a>
+            <a href="register" class="btn register-btn">Register</a>
+        `;
+    }
+});
+</script>
+
+
+    <script>
+        // Registration form logic
+        const registerForm = document.getElementById("reg");
+
+        registerForm.addEventListener("submit", function (e) {
+            e.preventDefault(); // prevent page refresh
+
+            // Get input values
+            const inputs = registerForm.querySelectorAll("input");
+            const fullName = inputs[0].value.trim();
+            const email = inputs[1].value.trim();
+            const username = inputs[2].value.trim();
+            const password = inputs[3].value.trim();
+            const confirmPassword = inputs[4].value.trim();
+
+            // Validate fields
+            if (!fullName || !email || !username || !password || !confirmPassword) {
+                showToast("error", "❌ All fields are required");
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                showToast("error", "❌ Passwords do not match");
+                return;
+            }
+
+            // Get existing users from localStorage or create empty array
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+
+            // Check if username already exists
+            if (users.some(user => user.username === username)) {
+                showToast("error", "❌ Username already exists");
+                return;
+            }
+
+            // Add new user
+            users.push({ fullName, email, username, password });
+            localStorage.setItem("users", JSON.stringify(users));
+
+            // Success toast & redirect
+            showToast("success", "✅ Registered successfully! Redirecting to login...");
+
+            setTimeout(() => {
+                window.location.href = "login";
+            }, 1500);
+        });
+    </script>
+
+    <script>
+        const form = document.getElementById("loginForm");
+        form.addEventListener("submit", function (e) {
+            e.preventDefault(); // STOP PAGE REFRESH
+
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if (username === "" || password === "") {
+                showToast("error", "❌ Username & Password are required");
+                return;
+            }
+
+            // Get users array from localStorage
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+
+
+            // Find user with matching username and password
+            const matchedUser = users.find(user => user.username === username && user.password === password);
+
+            if (matchedUser) {
+                localStorage.setItem("loggedInUser", username);
+                showToast("success", "✅ Login successful! Redirecting...");
+                setTimeout(() => {
+                    window.location.href = "index"; // redirect to your main page
+                }, 1500);
+            } else {
+                showToast("error", "❌ Invalid username or password");
+            }
+        });
+    </script>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        function addToCart(name, price) {
+           let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push({ name, price });
+            localStorage.setItem("cart", JSON.stringify(cart));
+
+            console.log("Added:", cart);
+            showToast("info", name + " added to cart (₹" + price + ")");
+        }
+
+
+function loadCart() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const table = document.getElementById("cartTable");
+    let total = 0;
+    table.innerHTML = "";
+
+    if (cart.length === 0) {
+        table.innerHTML = `
+            <tr>
+                <td colspan="3">Your cart is empty</td>
+            </tr>
+        `;
+        document.getElementById("totalPrice").textContent = "0";
+        return;
+    }
+
+    cart.forEach((item, index) => {
+        total += item.price;
+        table.innerHTML += `
+            <tr>
+                <td>${item.name}</td>
+                <td>${item.price}</td>
+                <td><button onclick="removeItem(${index})" class="remove">Remove</button></td>
+            </tr>
+        `;
+    });
+
+    document.getElementById("totalPrice").textContent = total;
+}
+
+function removeItem(index) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    loadCart();
+}
+
+function checkout() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+
+    localStorage.setItem("finalBill", JSON.stringify(cart));
+    window.location.href = "bill";
+}
+
+loadCart();
+</script>
+
+
+    <script>
+        const bill = JSON.parse(localStorage.getItem("finalBill")) || [];
+        let total = 0;
+
+        document.getElementById("date").textContent = new Date().toLocaleDateString();
+
+        const table = document.getElementById("billTable");
+
+        bill.forEach(item => {
+            total += item.price;
+            table.innerHTML += `
+        <tr>
+            <td>${item.name}</td>
+            <td>${item.price}</td>
+        </tr>
+    `;
+        });
+
+        document.getElementById("billTotal").textContent = total;
+    </script>
+
+
+<script>
+function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartCount = document.getElementById("cartCount");
+    if (cartCount) {
+        cartCount.textContent = cart.length;
+    }
+}
+
+// Run when page loads
+document.addEventListener("DOMContentLoaded", updateCartCount);
+
+// Also update count when item is added
+const originalAddToCart = addToCart;
+addToCart = function(name, price) {
+    originalAddToCart(name, price);
+    updateCartCount();
+};
+</script>
+
+
+    <div layout:fragment="content"></div>
+
+
+    <!-- footer -->
+    <footer th:insert="footer :: footer"></footer>
+
+</body>
+
+</html>

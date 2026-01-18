@@ -1,0 +1,16 @@
+<nav class="navbar" th:fragment="navbar">
+    <div class="nav-logo"><a href="/" style="text-decoration: none; color: rgb(137, 141, 144);">RE Motors</a></div>
+
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="about">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="#" onclick="showToast('info'); return false;">Contact</a></li>
+        <li><a href="cart" class="btn login-btn" id="cartBtn">🛒 Cart (<span id="cartCount">0</span>)</a> </li>
+    </ul>
+
+    <div class="nav-auth">
+        <a href="login" class="btn login-btn">Login</a>
+        <a href="register" class="btn register-btn">Register</a>
+    </div>
+</nav>

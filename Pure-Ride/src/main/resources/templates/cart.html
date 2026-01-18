@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{base}">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart | RE Motors</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <style>
+        .cart-container {
+            width: 60%;
+            margin: 40px auto;
+            text-align: center;
+            color: #fefcfc;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 2px solid #fefcfc;
+        }
+        .checkout-btn {
+            margin-top: 20px;
+            padding: 10px 15px;
+            border-radius: 10px;
+            background: green;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body><div layout:fragment="content" >
+
+    <h2 style="text-align:center; margin-top:50px;">Your Cart 🛒</h2>
+
+    <div class="cart-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Bike</th>
+                    <th>Price (₹)</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="cartTable"></tbody>
+        </table>
+
+        <h3>Total: ₹<span id="totalPrice">0</span></h3>
+
+        <button class="checkout-btn" onclick="checkout()">Checkout & Generate Bill</button>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!-- 👉 VERY IMPORTANT: CALL loadCart AFTER PAGE CONTENT LOADS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            loadCart();
+        });
+    </script>
+
+</div>
+
+</body>
+</html>
